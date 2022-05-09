@@ -32,11 +32,11 @@
 
 <script>
   function ipLookUp() {
-    $.ajax("http://ip-api.com/json").then(
+    $.ajax("http://ipapi.co/json").then(
       function success(response) {
         console.log("User's Country", response.country);
 
-        if (response.country == "Nepal") {
+        if (response.country == "NP") {
           document.getElementById("usd").setAttribute("selected", "true");
         }
       },
