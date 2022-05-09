@@ -1,0 +1,61 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<form
+  method="post"
+  action="/en-nz/cart/update"
+  id="currency_form"
+  accept-charset="UTF-8"
+  class="shopify-currency-form"
+  enctype="multipart/form-data"
+>
+  <input type="hidden" name="form_type" value="currency" /><input
+    type="hidden"
+    name="utf8"
+    value="✓"
+  /><input
+    type="hidden"
+    name="return_to"
+    value="/en-nz/collections/four-mukhi-4-face-rudraksha/products/four-mukhi-504rg"
+  />
+  <select name="currency">
+    <option>AED</option>
+    <option>AUD</option>
+    <option>CAD</option>
+    <option>EUR</option>
+    <option>GBP</option>
+    <option>INR</option>
+    <option>JPY</option>
+    <option selected="true">NZD $</option>
+    <option id="usd">USD</option>
+  </select>
+</form>
+
+<script>
+  function ipLookUp() {
+    $.ajax("http://ip-api.com/json").then(
+      function success(response) {
+        console.log("User's Country", response.country);
+
+        if (response.country == "Nepal") {
+          document.getElementById("usd").setAttribute("selected", "true");
+        }
+      },
+
+      function fail(data, status) {
+        console.log("Request failed.  Returned status of", status);
+      }
+    );
+  }
+
+  window.onload = function () {
+    var selItem = localStorage.getItem("SelItem");
+    $("#sort-item").val(selItem);
+  };
+
+  $("#sort-item").change(function () {
+    var selVal = $(this).val();
+    localStorage.setItem("SelItem", selVal);
+  });
+  ipLookUp();
+</script>
+a
